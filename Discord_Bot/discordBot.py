@@ -139,8 +139,21 @@ async def p1(ctx, *, space):
                     return P2canmove, P1canmove, board, board_num
 
                 else:
-                    print("no win :(")
-                    return P2canmove, P1canmove, board, board_num
+                    #Check if it is not a tie
+                    if  '-' in row1 or '-' in row2 or '-' in row3  or '-' in collum1  or '-' in collum2  or '-' in collum3  or '-' in diagonal1 or '-' in diagonal2:
+                        print("no win :(")
+                        return P2canmove, P1canmove, board, board_num
+                    #check for tie
+                    else:
+                        board = ["-","-","-",
+                                 "-","-","-",
+                                 "-","-","-",]
+                        GameStarted = False
+                        P1canmove = False
+                        P2canmove = False
+                        print("TIE!")
+                        await ctx.send("TIE!!!")
+                        return P2canmove, P1canmove, board, board_num
             else:
                 board_num = "null"
                 print("already placed there")
@@ -237,8 +250,21 @@ async def p2(ctx, *, space):
                     return P2canmove, P1canmove, board, board_num
 
                 else:
-                    print("no win :(")
-                    return P2canmove, P1canmove, board, board_num
+                    #Check if it is not a tie
+                    if  '-' in row1 or '-' in row2 or '-' in row3  or '-' in collum1  or '-' in collum2  or '-' in collum3  or '-' in diagonal1 or '-' in diagonal2:
+                        print("no win :(")
+                        return P2canmove, P1canmove, board, board_num
+                    #check for tie
+                    else:
+                        board = ["-","-","-",
+                                 "-","-","-",
+                                 "-","-","-",]
+                        GameStarted = False
+                        P1canmove = False
+                        P2canmove = False
+                        print("TIE!")
+                        await ctx.send("TIE!!!")
+                        return P2canmove, P1canmove, board, board_num
             else:
                 board_num = "null"
                 P2canmove = True
@@ -247,7 +273,7 @@ async def p2(ctx, *, space):
                 await ctx.send("already placed there!")
                 return P1canmove, P2canmove, board_num
                 
-    #Check if it is player two's turn
+    #Check if it is player one's turn
     elif GameStarted == True and P1canmove == True:
         await ctx.send("It is player one's turn!!")
         return
